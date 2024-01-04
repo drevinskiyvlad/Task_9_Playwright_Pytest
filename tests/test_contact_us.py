@@ -16,15 +16,15 @@ class TestContactUs:
         self.contact_us_page = ContactUsPage(self.page)
         self.faker = Faker()
 
-        self.main_page.visit()
-        self.main_page.verify_page()
-        self.main_page.click_contact_us_btn()
-
     def test_contact_us(self, test_setup):
         valid_name = self.faker.generate_random_string(6)
         valid_email = self.faker.generate_valid_email()
         valid_subject = self.faker.generate_random_string(6)
         valid_message = self.faker.generate_random_string(6)
+
+        self.main_page.visit()
+        self.main_page.verify_page()
+        self.main_page.click_contact_us_btn()
 
         self.contact_us_page.handle_alert()
         self.contact_us_page.send_message(valid_name, valid_email, valid_subject, valid_message)
