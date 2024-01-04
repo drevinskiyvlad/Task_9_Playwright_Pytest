@@ -15,6 +15,10 @@ class MainPage(BasePage):
         self.__logout_link = "#header a[href='/logout']"
         self.__contact_us_link = "#header a[href='/contact_us']"
         self.__test_cases_link = "#header a[href='/test_cases']"
+        self.__products_link = "#header a[href='/products']"
+
+    def click_products_btn(self) -> None:
+        self.click(self.__products_link)
 
     def click_test_cases_btn(self) -> None:
         self.click(self.__test_cases_link)
