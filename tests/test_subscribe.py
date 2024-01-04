@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import Page
 
-from helper.faker import Faker
+from utils.faker import Faker
 from pages.main_page import MainPage
 
 
