@@ -24,7 +24,7 @@ class TestContactUs:
 
         self.main_page.visit()
         self.main_page.verify_page()
-        self.main_page.click_contact_us_btn()
+        self.main_page.click_contact_us_link()
 
         self.contact_us_page.handle_alert()
         self.contact_us_page.send_message(valid_name, valid_email, valid_subject, valid_message)

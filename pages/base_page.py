@@ -18,7 +18,7 @@ class BasePage:
     def check(self, locator: str):
         self.get(locator).check()
 
-    def select_option(self, locator: str, option:str):
+    def select_option(self, locator: str, option: str):
         self.get(locator).select_option(option)
 
     def set_input_files(self, locator: str, files: str):

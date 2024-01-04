@@ -16,24 +16,34 @@ class MainPage(BasePage):
         self.__contact_us_link = "#header a[href='/contact_us']"
         self.__test_cases_link = "#header a[href='/test_cases']"
         self.__products_link = "#header a[href='/products']"
+        self.__subscription_title = "//h2[text()='Subscription']"
+        self.__subscribe_email_input = "#susbscribe_email"
+        self.__subscribe_button = "#subscribe"
 
-    def click_products_btn(self) -> None:
+    def subscribe(self, email: str) -> None:
+        self.input(self.__subscribe_email_input, email)
+        self.click(self.__subscribe_button)
+    
+    def click_products_link(self) -> None:
         self.click(self.__products_link)
 
-    def click_test_cases_btn(self) -> None:
+    def click_test_cases_link(self) -> None:
         self.click(self.__test_cases_link)
 
-    def click_contact_us_btn(self) -> None:
+    def click_contact_us_link(self) -> None:
         self.click(self.__contact_us_link)
 
-    def click_logout_btn(self) -> None:
+    def click_logout_link(self) -> None:
         self.click(self.__logout_link)
 
-    def click_login_btn(self) -> None:
+    def click_login_link(self) -> None:
         self.click(self.__login_button)
 
-    def click_delete_account_btn(self) -> None:
+    def click_delete_account_link(self) -> None:
         self.click(self.__delete_account_link)
+
+    def verify_subscription_title(self) -> None:
+        self.verify(self.__subscription_title)
 
     def verify_logged_in_user(self) -> None:
         self.verify(self.__logged_in_user_text)

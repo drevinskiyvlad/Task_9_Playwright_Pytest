@@ -25,7 +25,7 @@ class TestLogin:
 
         self.main_page.visit()
         self.main_page.verify_page()
-        self.main_page.click_login_btn()
+        self.main_page.click_login_link()
 
     def test_register(self, test_setup):
         valid_name = self.faker.generate_random_string(6)
@@ -75,7 +75,7 @@ class TestLogin:
         self.account_created_page.click_continue_btn()
         self.main_page.verify_page()
         self.main_page.verify_logged_in_user()
-        self.main_page.click_delete_account_btn()
+        self.main_page.click_delete_account_link()
 
         self.delete_account_page.verify_account_deleted_msg()
         self.delete_account_page.click_continue_btn()
@@ -108,7 +108,7 @@ class TestLogin:
 
         self.main_page.verify_page()
         self.main_page.verify_logged_in_user()
-        self.main_page.click_logout_btn()
+        self.main_page.click_logout_link()
 
         self.login_page.verify_login()
 

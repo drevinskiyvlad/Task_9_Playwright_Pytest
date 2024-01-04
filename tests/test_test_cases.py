@@ -17,5 +17,5 @@ class TestTestCases:
     def test_verify_test_cases_page(self, test_setup):
         self.main_page.visit()
         self.main_page.verify_page()
-        self.main_page.click_test_cases_btn()
+        self.main_page.click_test_cases_link()
         self.test_cases_page.verify_page()
