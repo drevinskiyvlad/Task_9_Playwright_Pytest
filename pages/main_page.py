@@ -11,21 +11,25 @@ class MainPage(BasePage):
         self.__slider_carousel = "#slider-carousel"
         self.__login_button = "a[href='/login']"
         self.__logged_in_user_text = "//a[contains(text(), 'Logged in as ')]"
-        self.__delete_account_button = "a[href='/delete_account']"
-        self.__logout_button = "a[href='/logout']"
-        self.__contact_us_button = "a[href='/contact_us']"
+        self.__delete_account_link = "#header a[href='/delete_account']"
+        self.__logout_link = "#header a[href='/logout']"
+        self.__contact_us_link = "#header a[href='/contact_us']"
+        self.__test_cases_link = "#header a[href='/test_cases']"
+
+    def click_test_cases_btn(self) -> None:
+        self.click(self.__test_cases_link)
 
     def click_contact_us_btn(self) -> None:
-        self.click(self.__contact_us_button)
+        self.click(self.__contact_us_link)
 
     def click_logout_btn(self) -> None:
-        self.click(self.__logout_button)
+        self.click(self.__logout_link)
 
     def click_login_btn(self) -> None:
         self.click(self.__login_button)
 
     def click_delete_account_btn(self) -> None:
-        self.click(self.__delete_account_button)
+        self.click(self.__delete_account_link)
 
     def verify_logged_in_user(self) -> None:
         self.verify(self.__logged_in_user_text)
