@@ -28,4 +28,5 @@ class BasePage:
         self.get(locator).fill(text)
 
     def verify(self, locator: str):
+        self.page.wait_for_selector(locator)
         expect(self.get(locator)).to_be_visible()

@@ -19,11 +19,12 @@ class MainPage(BasePage):
         self.__subscription_title = "//h2[text()='Subscription']"
         self.__subscribe_email_input = "#susbscribe_email"
         self.__subscribe_button = "#subscribe"
+        self.__subscribe_success_message = "#success-subscribe"
 
     def subscribe(self, email: str) -> None:
         self.input(self.__subscribe_email_input, email)
         self.click(self.__subscribe_button)
-    
+
     def click_products_link(self) -> None:
         self.click(self.__products_link)
 
@@ -41,6 +42,9 @@ class MainPage(BasePage):
 
     def click_delete_account_link(self) -> None:
         self.click(self.__delete_account_link)
+
+    def verify_subscribe_success_message(self) -> None:
+        self.verify(self.__subscribe_success_message)
 
     def verify_subscription_title(self) -> None:
         self.verify(self.__subscription_title)
