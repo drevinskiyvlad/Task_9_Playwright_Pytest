@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Page
 
 from pages.base_page import BasePage
@@ -20,23 +21,29 @@ class LoginPage(BasePage):
         self.__login_button = "button[data-qa='login-button']"
 
     def signup(self, name: str, email: str) -> None:
-        self.input(self.__signup_name_input, name)
-        self.input(self.__signup_email_input, email)
-        self.click(self.__signup_button)
+        with allure.step('Enter name, email and click Sign up button'):
+            self.input(self.__signup_name_input, name)
+            self.input(self.__signup_email_input, email)
+            self.click(self.__signup_button)
 
     def login(self, email: str, password: str) -> None:
-        self.input(self.__login_email_input, email)
-        self.input(self.__login_password_input, password)
-        self.click(self.__login_button)
+        with allure.step('Enter email, password and click Login button'):
+            self.input(self.__login_email_input, email)
+            self.input(self.__login_password_input, password)
+            self.click(self.__login_button)
 
     def verify_invalid_login_credentials_msg(self) -> None:
-        self.verify(self.__invalid_login_credentials_message)
+        with allure.step('Verify error \'Your email or password is incorrect!\' is visible'):
+            self.verify(self.__invalid_login_credentials_message)
 
     def verify_invalid_signup_credentials_msg(self) -> None:
-        self.verify(self.__invalid_signup_credentials_message)
+        with allure.step('Verify error \'Email Address already exist!\' is visible'):
+            self.verify(self.__invalid_signup_credentials_message)
 
     def verify_register(self) -> None:
-        self.verify(self.__new_user_signup_message)
+        with allure.step('Verify that \'ENTER ACCOUNT INFORMATION\' is visible'):
+            self.verify(self.__new_user_signup_message)
 
     def verify_login(self) -> None:
-        self.verify(self.__new_user_login_message)
+        with allure.step('Verify \'Login to your account\' is visible'):
+            self.verify(self.__new_user_login_message)

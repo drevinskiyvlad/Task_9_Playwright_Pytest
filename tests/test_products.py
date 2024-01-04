@@ -34,6 +34,6 @@ class TestProducts:
         self.all_products_page.search_product(valid_product_name)
 
         self.all_products_page.verify_searched_products_title()
-        self.all_products_page.verify_first_product()
+        self.all_products_page.verify_products()
 
         take_screenshot(self.page, "Search Product")

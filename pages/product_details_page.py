@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Page
 
 from pages.base_page import BasePage
@@ -17,12 +18,14 @@ class ProductDetailsPage(BasePage):
         self.__product_brand = "//b[contains(text(),'Brand')]"
 
     def verify_page(self) -> None:
-        self.verify(self.__product_details)
+        with allure.step('User is landed to product detail page'):
+            self.verify(self.__product_details)
 
     def verify_product_information(self) -> None:
-        self.verify(self.__product_name)
-        self.verify(self.__product_category)
-        self.verify(self.__product_price)
-        self.verify(self.__product_availability)
-        self.verify(self.__product_condition)
-        self.verify(self.__product_brand)
+        with allure.step('Verify that detail is visible: product name, category, price, availability, condition, brand'):
+            self.verify(self.__product_name)
+            self.verify(self.__product_category)
+            self.verify(self.__product_price)
+            self.verify(self.__product_availability)
+            self.verify(self.__product_condition)
+            self.verify(self.__product_brand)
