@@ -121,4 +121,3 @@ class TestLogin:
         self.login_page.signup(valid_name, valid_email)
 
         self.login_page.verify_invalid_signup_credentials_msg()
-

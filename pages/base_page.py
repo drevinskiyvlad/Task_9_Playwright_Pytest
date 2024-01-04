@@ -21,6 +21,9 @@ class BasePage:
     def select_option(self, locator: str, option:str):
         self.get(locator).select_option(option)
 
+    def set_input_files(self, locator: str, files: str):
+        self.get(locator).set_input_files(files)
+
     def input(self, locator: str, text: str):
         self.get(locator).fill(text)
 
