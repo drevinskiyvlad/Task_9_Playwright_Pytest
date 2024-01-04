@@ -4,6 +4,7 @@ from playwright.sync_api import Page
 from pages.all_products_page import AllProductsPage
 from pages.main_page import MainPage
 from pages.product_details_page import ProductDetailsPage
+from utils.tools import take_screenshot
 
 
 class TestProducts:
@@ -25,6 +26,8 @@ class TestProducts:
         self.product_details_page.verify_page()
         self.product_details_page.verify_product_information()
 
+        take_screenshot(self.page, "All Products and Product Details")
+
     def test_search_product(self, test_setup):
         valid_product_name = "Men Tshirt"
 
@@ -32,3 +35,5 @@ class TestProducts:
 
         self.all_products_page.verify_searched_products_title()
         self.all_products_page.verify_first_product()
+
+        take_screenshot(self.page, "Search Product")

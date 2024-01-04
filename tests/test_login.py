@@ -8,6 +8,7 @@ from pages.delete_account_page import DeleteAccountPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.signup_page import SignupPage
+from utils.tools import take_screenshot
 
 
 class TestLogin:
@@ -78,6 +79,8 @@ class TestLogin:
         self.delete_account_page.verify_account_deleted_msg()
         self.delete_account_page.click_continue_btn()
 
+        take_screenshot(self.page, "Registration")
+
     def test_login_with_valid_credentials(self, test_setup):
         valid_email = Data.valid_email
         valid_password = Data.valid_password
@@ -88,6 +91,8 @@ class TestLogin:
         self.main_page.verify_page()
         self.main_page.verify_logged_in_user()
 
+        take_screenshot(self.page, "Login with valid credentials")
+
     def test_login_with_invalid_credentials(self, test_setup):
         invalid_email = self.faker.generate_valid_email()
         invalid_password = self.faker.generate_random_string(8)
@@ -96,6 +101,8 @@ class TestLogin:
         self.login_page.login(invalid_email, invalid_password)
 
         self.login_page.verify_invalid_login_credentials_msg()
+
+        take_screenshot(self.page, "Login with invalid credentials")
 
     def test_logout(self, test_setup):
         valid_email = Data.valid_email
@@ -110,6 +117,8 @@ class TestLogin:
 
         self.login_page.verify_login()
 
+        take_screenshot(self.page, "Logout")
+
     def test_registration_with_existing_email(self, test_setup):
         valid_name = self.faker.generate_random_string(6)
         valid_email = Data.valid_email
@@ -118,3 +127,5 @@ class TestLogin:
         self.login_page.signup(valid_name, valid_email)
 
         self.login_page.verify_invalid_signup_credentials_msg()
+
+        take_screenshot(self.page, "Registration with existing email")

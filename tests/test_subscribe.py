@@ -3,6 +3,7 @@ from playwright.sync_api import Page
 
 from utils.faker import Faker
 from pages.main_page import MainPage
+from utils.tools import take_screenshot
 
 
 class TestSubscribe:
@@ -19,3 +20,5 @@ class TestSubscribe:
         self.main_page.verify_page()
         self.main_page.subscribe(valid_email)
         self.main_page.verify_subscribe_success_message()
+
+        take_screenshot(self.page, "Subscribe")

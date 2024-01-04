@@ -4,6 +4,7 @@ from playwright.sync_api import Page
 from utils.faker import Faker
 from pages.contact_us_page import ContactUsPage
 from pages.main_page import MainPage
+from utils.tools import take_screenshot
 
 
 class TestContactUs:
@@ -27,3 +28,5 @@ class TestContactUs:
         self.contact_us_page.handle_alert()
         self.contact_us_page.send_message(valid_name, valid_email, valid_subject, valid_message)
         self.contact_us_page.verify_success_message()
+
+        take_screenshot(self.page, "Contact Us")
