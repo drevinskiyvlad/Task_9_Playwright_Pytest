@@ -12,6 +12,14 @@ class MainPage(BasePage):
         self.__login_button = "a[href='/login']"
         self.__logged_in_user_text = "//a[contains(text(), 'Logged in as ')]"
         self.__delete_account_button = "a[href='/delete_account']"
+        self.__logout_button = "a[href='/logout']"
+        self.__contact_us_button = "a[href='/contact_us']"
+
+    def click_contact_us_btn(self) -> None:
+        self.click(self.__contact_us_button)
+
+    def click_logout_btn(self) -> None:
+        self.click(self.__logout_button)
 
     def click_login_btn(self) -> None:
         self.click(self.__login_button)

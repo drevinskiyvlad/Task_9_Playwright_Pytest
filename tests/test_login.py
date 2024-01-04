@@ -2,6 +2,7 @@ import pytest
 
 from playwright.sync_api import Page
 
+from data.data import Data
 from helper.faker import Faker
 from pages.account_created_page import AccountCreatedPage
 from pages.delete_account_page import DeleteAccountPage
@@ -80,5 +81,44 @@ class TestLogin:
         self.delete_account_page.verify_account_deleted_msg()
         self.delete_account_page.click_continue_btn()
 
-    # def test_login(self, test_setup):
+    def test_login_with_valid_credentials(self, test_setup):
+        valid_email = Data.valid_email
+        valid_password = Data.valid_password
+
+        self.login_page.verify_login()
+        self.login_page.login(valid_email, valid_password)
+
+        self.main_page.verify_page()
+        self.main_page.verify_logged_in_user()
+
+    def test_login_with_invalid_credentials(self, test_setup):
+        invalid_email = self.faker.generate_valid_email()
+        invalid_password = self.faker.generate_random_string(8)
+
+        self.login_page.verify_login()
+        self.login_page.login(invalid_email, invalid_password)
+
+        self.login_page.verify_invalid_login_credentials_msg()
+
+    def test_logout(self, test_setup):
+        valid_email = Data.valid_email
+        valid_password = Data.valid_password
+
+        self.login_page.verify_login()
+        self.login_page.login(valid_email, valid_password)
+
+        self.main_page.verify_page()
+        self.main_page.verify_logged_in_user()
+        self.main_page.click_logout_btn()
+
+        self.login_page.verify_login()
+
+    def test_registration_with_existing_email(self, test_setup):
+        valid_name = self.faker.generate_random_string(6)
+        valid_email = Data.valid_email
+
+        self.login_page.verify_register()
+        self.login_page.signup(valid_name, valid_email)
+
+        self.login_page.verify_invalid_signup_credentials_msg()
 
