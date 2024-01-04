@@ -5,9 +5,6 @@ class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
-    def navigate(self, url: str):
-        self.page.goto(url)
-
     def get(self, locator: str):
         return self.page.locator(locator)
 

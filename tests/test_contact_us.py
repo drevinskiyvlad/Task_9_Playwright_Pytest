@@ -8,9 +8,8 @@ from pages.main_page import MainPage
 
 class TestContactUs:
     @pytest.fixture()
-    def test_setup(self, page: Page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page: Page):
+        self.page = new_page
 
         self.main_page = MainPage(self.page)
         self.contact_us_page = ContactUsPage(self.page)
@@ -22,7 +21,6 @@ class TestContactUs:
         valid_subject = self.faker.generate_random_string(6)
         valid_message = self.faker.generate_random_string(6)
 
-        self.main_page.visit()
         self.main_page.verify_page()
         self.main_page.click_contact_us_link()
 

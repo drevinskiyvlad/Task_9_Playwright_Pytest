@@ -7,16 +7,14 @@ from pages.product_details_page import ProductDetailsPage
 
 
 class TestProducts:
-    @pytest.fixture()
-    def test_setup(self, page: Page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    @pytest.fixture
+    def test_setup(self, new_page: Page):
+        self.page = new_page
 
         self.main_page = MainPage(self.page)
         self.all_products_page = AllProductsPage(self.page)
         self.product_details_page = ProductDetailsPage(self.page)
 
-        self.main_page.visit()
         self.main_page.verify_page()
         self.main_page.click_products_link()
 

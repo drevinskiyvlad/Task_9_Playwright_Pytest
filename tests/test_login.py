@@ -11,10 +11,9 @@ from pages.signup_page import SignupPage
 
 
 class TestLogin:
-    @pytest.fixture()
-    def test_setup(self, page: Page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    @pytest.fixture
+    def test_setup(self, new_page: Page):
+        self.page = new_page
 
         self.main_page = MainPage(self.page)
         self.login_page = LoginPage(self.page)
@@ -23,7 +22,6 @@ class TestLogin:
         self.delete_account_page = DeleteAccountPage(self.page)
         self.faker = Faker()
 
-        self.main_page.visit()
         self.main_page.verify_page()
         self.main_page.click_login_link()
 

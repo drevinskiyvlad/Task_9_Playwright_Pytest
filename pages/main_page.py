@@ -54,6 +54,3 @@ class MainPage(BasePage):
 
     def verify_page(self) -> None:
         self.verify(self.__slider_carousel)
-
-    def visit(self) -> None:
-        self.navigate("https://automationexercise.com/")
