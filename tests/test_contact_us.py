@@ -16,6 +16,7 @@ class TestContactUs:
         self.contact_us_page = ContactUsPage(self.page)
         self.faker = Faker()
 
+    @pytest.mark.contact_us
     def test_contact_us(self, test_setup):
         valid_name = self.faker.generate_random_string(6)
         valid_email = self.faker.generate_valid_email()

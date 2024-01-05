@@ -19,6 +19,7 @@ class TestProducts:
         self.main_page.verify_page()
         self.main_page.click_products_link()
 
+    @pytest.mark.products
     def test_all_products_and_product_details(self, test_setup):
         self.all_products_page.verify_page()
         self.all_products_page.click_first_product_details_link()
@@ -28,6 +29,7 @@ class TestProducts:
 
         take_screenshot(self.page, "All Products and Product Details")
 
+    @pytest.mark.products
     def test_search_product(self, test_setup):
         valid_product_name = "Men Tshirt"
 

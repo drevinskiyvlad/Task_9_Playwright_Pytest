@@ -26,6 +26,7 @@ class TestLogin:
         self.main_page.verify_page()
         self.main_page.click_login_link()
 
+    @pytest.mark.login
     def test_register(self, test_setup):
         valid_name = self.faker.generate_random_string(6)
         valid_email = self.faker.generate_valid_email()
@@ -81,6 +82,7 @@ class TestLogin:
 
         take_screenshot(self.page, "Registration")
 
+    @pytest.mark.login
     def test_login_with_valid_credentials(self, test_setup):
         valid_email = Data.valid_email
         valid_password = Data.valid_password
@@ -93,6 +95,7 @@ class TestLogin:
 
         take_screenshot(self.page, "Login with valid credentials")
 
+    @pytest.mark.login
     def test_login_with_invalid_credentials(self, test_setup):
         invalid_email = self.faker.generate_valid_email()
         invalid_password = self.faker.generate_random_string(8)
@@ -104,6 +107,7 @@ class TestLogin:
 
         take_screenshot(self.page, "Login with invalid credentials")
 
+    @pytest.mark.login
     def test_logout(self, test_setup):
         valid_email = Data.valid_email
         valid_password = Data.valid_password
@@ -119,6 +123,7 @@ class TestLogin:
 
         take_screenshot(self.page, "Logout")
 
+    @pytest.mark.login
     def test_registration_with_existing_email(self, test_setup):
         valid_name = self.faker.generate_random_string(6)
         valid_email = Data.valid_email

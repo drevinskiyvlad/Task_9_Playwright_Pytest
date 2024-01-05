@@ -14,6 +14,7 @@ class TestTestCases:
         self.main_page = MainPage(self.page)
         self.test_cases_page = CasesPage(self.page)
 
+    @pytest.mark.testCases
     def test_verify_test_cases_page(self, test_setup):
         self.main_page.verify_page()
         self.main_page.click_test_cases_link()

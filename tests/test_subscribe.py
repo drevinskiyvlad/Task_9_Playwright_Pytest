@@ -14,6 +14,7 @@ class TestSubscribe:
         self.main_page = MainPage(self.page)
         self.faker = Faker()
 
+    @pytest.mark.subscribe
     def test_subscribe(self, test_setup):
         valid_email = self.faker.generate_valid_email()
 
