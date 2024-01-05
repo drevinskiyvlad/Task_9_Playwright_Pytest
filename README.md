@@ -14,20 +14,17 @@ Before running the tests, ensure the following dependencies are installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your/repository.git
+   git clone https://github.com/drevinskiyvlad/Task_9_Playwright_Pytest.git
    cd repository
    ```
 
-2. Install Python dependencies:
+2. Install environment:
 
    ```bash
-   pip install playwright pytest allure-pytest
-   ```
-
-3. Install Playwright:
-
-   ```bash
-   playwright install
+   python -m pip install --upgrade pip
+   pip install pipenv
+   pipenv install --system
+   playwright install chromium
    ```
 
 # Steps to Run Tests
@@ -36,6 +33,12 @@ To run the entire test suite, use the following command:
 
 ```bash
 pytest
+```
+
+To run one particular test, use the following command, replacing `<test_name>` with the name of the test (e.g., test_login):
+
+```bash
+pytest -k <test_name>
 ```
 
 To run tests for a specific feature, use the following command, replacing `<feature>` with the desired feature (e.g., login, products, contact_us, subscribe, testCases):
