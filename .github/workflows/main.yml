@@ -32,6 +32,7 @@ jobs:
           allure_results: reports
           allure_history: allure-history
           keep_reports: 20
+
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
@@ -39,3 +40,13 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+
+      - name: Report status
+        if: always()
+        uses: ravsamhq/notify-slack-action@v1
+        with:
+            status: ${{ job.status }}
+            message_format: ${{ secrets.GH_ACTIONS_URL }}
+            notify_when: "success,failure"
+        env:
+            SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
