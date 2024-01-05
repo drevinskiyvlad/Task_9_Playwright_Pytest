@@ -2,12 +2,12 @@ import pytest
 from playwright.sync_api import Page
 
 from data.data import Data
-from utils.faker import Faker
 from pages.account_created_page import AccountCreatedPage
 from pages.delete_account_page import DeleteAccountPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.signup_page import SignupPage
+from utils.faker import Faker
 from utils.tools import take_screenshot
 
 
